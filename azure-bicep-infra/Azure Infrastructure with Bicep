@@ -1,0 +1,24 @@
+
+**Example `main.bicep`**
+```bicep
+param location string = resourceGroup().location
+param storageName string
+param sqlName string
+
+resource storage 'Microsoft.Storage/storageAccounts@2021-09-01' = {
+  name: storageName
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'StorageV2'
+}
+
+resource sql 'Microsoft.Sql/servers@2021-02-01-preview' = {
+  name: sqlName
+  location: location
+  properties: {
+    administratorLogin: 'adminUser'
+    administratorLoginPassword: 'P@ssw0rd123!'
+  }
+}
