@@ -13,9 +13,18 @@ This repository contains the Infrastructure-as-Code (IaC) templates used to depl
 * **CI/CD:** GitHub Actions for automated Plan/Apply cycles.
 * **State Management:** Remote state stored in encrypted Azure Blob Storage with state locking.
 
-4. AKS Cluster Deployment
-Deploy the validated images to the Azure Kubernetes Service (AKS) private cluster using Helm:
+Note: This deployment enforces VNet encapsulation by default; ensure your runner has private network access.
 
-Bash
 
-helm install mhd-platform ./charts/mhd-platform --set tenantId=$AZURE_TENANT_ID
+---
+
+### **2. Automation: `cloud-infra-automation` (Infrastructure Deployment)**
+Add this section to your `cloud-infra-automation` README. This demonstrates your **Security-By-Design** approach to automated governance.
+
+```markdown
+## 🛠️ Deployment Lifecycle (Terraform Workflow)
+
+### 1. Initialization & Backend Setup
+Infrastructure state is stored in an encrypted Azure Blob Storage container with state locking enabled for team collaboration.
+```bash
+terraform init -backend-config="storage_account_name=<STORAGE_ACCOUNT>"
