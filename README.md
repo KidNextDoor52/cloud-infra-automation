@@ -12,3 +12,10 @@ This repository contains the Infrastructure-as-Code (IaC) templates used to depl
 ## 🚀 DevOps Workflow
 * **CI/CD:** GitHub Actions for automated Plan/Apply cycles.
 * **State Management:** Remote state stored in encrypted Azure Blob Storage with state locking.
+
+4. AKS Cluster Deployment
+Deploy the validated images to the Azure Kubernetes Service (AKS) private cluster using Helm:
+
+Bash
+
+helm install mhd-platform ./charts/mhd-platform --set tenantId=$AZURE_TENANT_ID
